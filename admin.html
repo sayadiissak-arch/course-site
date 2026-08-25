@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پنل مدیریت | آکادمی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo"><span class="mark">آ</span>آکادمی<span>.</span></a>
+    <div style="flex:1"></div>
+    <div class="header-actions">
+      <a href="index.html"><span class="ico">🏠</span>بازگشت به سایت</a>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding-top:20px;">
+
+  <div class="admin-lock" id="adminLock">
+    <h3>ورود به پنل مدیریت</h3>
+    <p style="font-size:12.5px;color:var(--ink-soft);">رمز پیش‌فرض: 1234 — حتماً بعد از اولین ورود تغییرش دهید.</p>
+    <input type="password" id="adminPassInput" placeholder="رمز عبور">
+    <button class="btn btn-primary" style="width:100%;" id="adminLoginBtn">ورود</button>
+  </div>
+
+  <div class="admin-wrap" id="adminWrap">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <h2 style="margin:0;">پنل مدیریت</h2>
+      <button class="btn btn-ghost btn-sm" id="changePassBtn">تغییر رمز عبور</button>
+    </div>
+
+    <!-- افزودن دوره -->
+    <div class="admin-panel">
+      <h3>افزودن دوره جدید</h3>
+      <form id="courseForm">
+        <div class="form-grid" style="margin-top:12px;">
+          <div><label>عنوان دوره</label><input type="text" id="cTitle" required></div>
+          <div><label>دسته‌بندی</label><input type="text" id="cCategory" placeholder="مثلاً: برنامه‌نویسی" required></div>
+          <div><label>نام مدرس</label><input type="text" id="cInstructor"></div>
+          <div><label>لینک تصویر کاور (اختیاری)</label><input type="text" id="cImage" placeholder="https://..."></div>
+          <div><label>قیمت (تومان)</label><input type="number" id="cPrice" min="0" required></div>
+          <div><label>قیمت قبل از تخفیف (اختیاری)</label><input type="number" id="cOldPrice" min="0"></div>
+        </div>
+        <div style="margin-top:10px;">
+          <label style="font-size:12.5px;color:var(--ink-soft);">توضیحات دوره</label>
+          <textarea id="cDesc" rows="3" style="width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font-family:var(--font);"></textarea>
+        </div>
+        <label style="display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;">
+          <input type="checkbox" id="cFree"> این دوره جزو دوره‌های قابل دریافت رایگان باشد
+        </label>
+        <button type="submit" class="btn btn-primary btn-sm" style="margin-top:14px;">افزودن دوره</button>
+      </form>
+
+      <table class="admin-table">
+        <thead><tr><th>عنوان</th><th>دسته</th><th>قیمت</th><th>رایگان؟</th><th></th></tr></thead>
+        <tbody id="courseTableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- فعالیت‌های روزانه -->
+    <div class="admin-panel">
+      <h3>فعالیت‌های روزانه (باشگاه دوره رایگان)</h3>
+      <form id="activityForm" style="display:flex;gap:10px;margin-top:12px;">
+        <input type="text" id="actText" placeholder="متن فعالیت جدید..." style="flex:1;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font-family:var(--font);">
+        <button type="submit" class="btn btn-primary btn-sm">افزودن</button>
+      </form>
+      <table class="admin-table">
+        <thead><tr><th>فعالیت</th><th></th></tr></thead>
+        <tbody id="activityTableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- درخواست‌های دوره رایگان -->
+    <div class="admin-panel">
+      <h3>درخواست‌های دوره رایگان</h3>
+      <p style="font-size:12.5px;color:var(--ink-soft);">
+        این لیست فقط در همین مرورگر ذخیره می‌شود. برای دریافت درخواست‌های واقعی کاربران روی دامنه‌ی زنده، باید فرم را به یک سرویس ارسال فرم (مثل Formspree) یا یک ربات تلگرام وصل کنید — توضیح کامل در فایل README.txt آمده است.
+      </p>
+      <table class="admin-table">
+        <thead><tr><th>نام</th><th>شماره تماس</th><th>دوره درخواستی</th><th>تاریخ</th></tr></thead>
+        <tbody id="claimTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
